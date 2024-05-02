@@ -1,0 +1,13 @@
+.book-grid-container {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: auto auto;
+  padding: 0 25%;
+}
+
+.rating-grid-container {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: auto auto auto auto auto;
+  padding: 0 25%;
+}
