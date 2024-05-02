@@ -1,18 +1,34 @@
-<div class="book-grid-container">
-  <div>Book name:</div>
-  <div>{{ books[bookIndex].name }}</div>
-  <div>Book description:</div>
-  <div>{{ books[bookIndex].description }}</div>
-  <div>Book author:</div>
-  <div>{{ books[bookIndex].author }}</div>
-  <div>Rating:</div>
-  <div>{{ books[bookIndex].getAverageRating().toFixed(2) }}</div>
-</div>
-<div class="rating-grid-container">
-  <button
-    *ngFor="let number of [1, 2, 3, 4, 5]; let i = index"
-    (click)="rateBook(i + 1)"
-  >
-    {{ i + 1 }}
-  </button>
-</div>
+<ng-container *ngIf="pageState === PageState.Reviewing">
+  <div class="book-grid-container">
+    <div>Book name:</div>
+    <div>{{ books[bookIndex].name }}</div>
+    <div>Book description:</div>
+    <div>{{ books[bookIndex].description }}</div>
+    <div>Book author:</div>
+    <div>{{ books[bookIndex].author }}</div>
+    <div>Rating:</div>
+    <div>{{ books[bookIndex].getAverageRating().toFixed(2) }}</div>
+  </div>
+  <div class="margin-bottom-2"></div>
+  <div class="rating-grid-container">
+    <button
+      *ngFor="let number of [1, 2, 3, 4, 5]; let i = index"
+      (click)="rateBook(i + 1)"
+    >
+      {{ i + 1 }}
+    </button>
+  </div>
+</ng-container>
+<ng-container *ngIf="pageState === PageState.PromptForContinuation">
+  <div class="centered-text-container">
+    <h2>You rated all books!</h2>
+    <button class="prompt-button" (click)="continueRating()">Continue</button>
+    <div class="margin-bottom-2"></div>
+    <button class="prompt-button" (click)="finishRating()">Finish</button>
+  </div>
+</ng-container>
+<ng-container *ngIf="pageState === PageState.Finished">
+  <div class="centered-text-container">
+    <h2>All finished!</h2>
+  </div>
+</ng-container>

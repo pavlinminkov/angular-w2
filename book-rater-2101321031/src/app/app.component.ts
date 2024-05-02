@@ -10,7 +10,9 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  public bookIndex = 0;
+  public bookIndex: number = 0;
+  public PageState: typeof PageState = PageState;
+  public pageState: PageState = PageState.Reviewing;
 
   public books: Book[] = [
     new Book(
@@ -45,11 +47,21 @@ export class AppComponent {
 
     if (this.bookIndex + 1 === this.books.length) {
       this.bookIndex = 0;
+      this.pageState = PageState.PromptForContinuation;
     } else {
       this.bookIndex++;
     }
   }
+
+  public continueRating() {
+    this.pageState = PageState.Reviewing;
+  }
+
+  public finishRating() {
+    this.pageState = PageState.Finished;
+  }
 }
+
 
 class Book {
   public name: string;
@@ -75,4 +87,10 @@ class Book {
     }
     return this.reviews.reduce((p, c) => p + c, 0) / length;
   }
+}
+
+enum PageState {
+  Reviewing,
+  PromptForContinuation,
+  Finished
 }
