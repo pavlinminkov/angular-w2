@@ -19,7 +19,7 @@ export class AppComponent {
       'Mark Z. Danielewski'
     ),
     new Book(
-      'Design-Patterns-Elements-Reusable-Object-Oriented',
+      'Design Patterns: Elements of Reusable Object-Oriented Software',
       'A software engineering book describing software design patterns. The book was written by Erich Gamma, Richard Helm, Ralph Johnson, and John Vlissides, with a foreword by Grady Booch.',
       'Gang of Four'
     ),
